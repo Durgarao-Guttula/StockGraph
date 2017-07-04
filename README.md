@@ -7,3 +7,7 @@ This is another quick test.
 
 ## Select Stocks
 
+![Screenshot](FTSE-WebServer.png)
+
+## Graph
+![Screenshot](graph.png)
