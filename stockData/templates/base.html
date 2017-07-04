@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+
+<head>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0"> {% block head %}
+    <title> Home Profile Page </title>
+
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+
+        <div class="container">
+
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'stockData:home' %}">InvestApp</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+
+                        {% if request.user.is_authenticated %}
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="{% url 'stockData:home' %}">View Profile</a></li>
+                            <li><a href="{% url 'stockData:home' %}">Edit Profile</a></li>
+                            <li><a href="{% url 'stockData:home' %}">Change Password</a></li>
+
+                        </ul>
+                        <ul id="leftNavCol" class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'stockData:home' %}" class="glyphicon glyphicon-log-out"> Logout</a></li>
+                            {% if request.user.is_superuser %}
+                            <li><a href="/admin/" class="glyphicon glyphicon-log-out"> Admin</a></li>
+                            {% endif %}
+                        </ul>
+
+                        {% else %}
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="{% url 'graphs:graph' %}">Graph</a></li>
+
+                        </ul>
+                        <ul id="leftNavCol" class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'stockData:home' %}" class="glyphicon glyphicon-log-in"> LogIn</a></li>
+                            <li><a href="{% url 'stockData:home' %}" class="glyphicon glyphicon-save"> Register</a></li>
+                            <li><a href="{% url 'stockData:home' %}" class="glyphicon glyphicon-log-out">  Reset</a></li>
+
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </nav>
+
+
+        </div>
+    </header>
+    
+    <div class="container-fluid jumbotron">
+   
+    {% block body %} {% endblock %}
+
+</div>
+
+
+    <!--<script src="{% static 'js/jquery-3.2.0.min.js' %}"></script>-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Amaranth|Asar|Bree+Serif|Capriola|Crete+Round|Headland+One|Montserrat|Patua+One|Quando|Roboto" rel="stylesheet">
+    
+</body>
+
+</html>

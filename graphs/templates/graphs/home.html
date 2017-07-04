@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<h1>InvestApp Test</h1>
+
+ {% block body %}
+
+
+<h1>Graph</h1>
+
+<div class="jumbotron">
+
+    <h3> {{Value}} at {{DateF}} file {{Filename}}</h3>
+
+    <img src="{% static Filename %}">
+
+</div>
+<br> 
+
+{% endblock %}
